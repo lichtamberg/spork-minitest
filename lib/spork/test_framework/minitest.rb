@@ -13,7 +13,7 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
     paths, opts = parse_options(argv)
 
     paths.each do |path|
-      load path
+      load path if File.exists?(path)
     end
 
     ::MiniTest::Unit.new.run(opts)
